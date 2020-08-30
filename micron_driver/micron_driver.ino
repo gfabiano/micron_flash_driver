@@ -2,12 +2,6 @@
 
 #define IO_START_ADDR 0
 
-#define IO0 0
-#define IO1 1
-#define IO2 2
-#define IO3 3
-#define IO4 4
-
 
 #define ALE 16
 #define CE  17
@@ -19,12 +13,13 @@
 // PINS )
 
 // ( COMMANDS
-#define CMD_READ 0x30
+#define CMD_READ 0x00
 
 // COMMANDS )
 
 
 // setto i pin dell'arduino in input
+inline
 void set_bus_read()
 {
     for (size_t i = 0; i < 8; ++i){
@@ -33,6 +28,7 @@ void set_bus_read()
 }
 
 // setto i pin dell'arduino in output
+inline
 void set_bus_write()
 {
     for (size_t i = 0; i < 8; ++i){
@@ -70,6 +66,7 @@ void setup() {
 
 // dorme fino a quando la memoria non è pronta
 // a ricevere un comando
+inline
 void until_ready() {
      while (digitalRead(READY) == 0) {
         delay(10); 
